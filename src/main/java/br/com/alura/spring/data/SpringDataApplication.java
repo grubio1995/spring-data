@@ -23,7 +23,7 @@ public class SpringDataApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Cargo cargo = new Cargo();
-		cargo.setDescricao("DESENVOLVEDOF DE SOFTWARE");
+		cargo.setDescricao("DESENVOLVEDOR DE SOFTWARE");
 		
 		repository.save(cargo);
 	}
