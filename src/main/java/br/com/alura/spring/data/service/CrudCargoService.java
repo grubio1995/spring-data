@@ -1,5 +1,6 @@
 package br.com.alura.spring.data.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class CrudCargoService {
 			System.out.println("0 - Sair");
 			System.out.println("1 - Cadastrar");
 			System.out.println("2 - Atualizar");
+			System.out.println("3 - Visualizar");
+			System.out.println("4 - Deletar");
 
 			int action = scanner.nextInt();
 
@@ -37,7 +40,12 @@ public class CrudCargoService {
 			case 2:
 				atualizar(scanner);
 				break;
-
+			case 3:
+				visualizar();
+				break;
+			case 4:
+				deletar(scanner);
+				break;
 			default:
 				system = false;
 				break;
@@ -57,7 +65,7 @@ public class CrudCargoService {
 	}
 
 	private void atualizar(Scanner scanner) {
-		System.out.println("Id do cargo para atualizar: ");
+		System.out.println("Id: ");
 		int id = scanner.nextInt();
 		System.out.println("Digite a descrição: ");
 		String descricao = scanner.next();
@@ -70,4 +78,16 @@ public class CrudCargoService {
 		System.out.println("Atualizado");
 	}
 
+	private void visualizar() {
+		Iterable<Cargo> cargos = repository.findAll();
+		cargos.forEach(System.out::println);
+	}
+	
+	private void deletar(Scanner scanner) {
+		System.out.println("Id: ");
+		int id = scanner.nextInt();
+
+		repository.deleteById(id);
+		System.out.println("Removido");
+	}
 }
