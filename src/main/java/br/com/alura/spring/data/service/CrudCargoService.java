@@ -24,27 +24,34 @@ public class CrudCargoService {
 		while (system) {
 
 			System.out.println("Digite a operação");
+			System.out.println("0 - Sair");
 			System.out.println("1 - Cadastrar");
-			System.out.println("2 - Alterar");
+			System.out.println("2 - Atualizar");
 
 			int action = scanner.nextInt();
 
-			if (action == 1) {
+			switch (action) {
+			case 1:
 				salvar(scanner);
-			} else if (action == 2) {
+				break;
+			case 2:
 				atualizar(scanner);
-			} else {
-				system = false;
-			}
+				break;
 
+			default:
+				system = false;
+				break;
+			}
 		}
 	}
 
 	private void salvar(Scanner scanner) {
 		System.out.println("Descrição do cargo: ");
 		String descricao = scanner.next();
+
 		Cargo cargo = new Cargo();
 		cargo.setDescricao(descricao);
+
 		repository.save(cargo);
 		System.out.println("Salvo");
 	}
@@ -52,13 +59,13 @@ public class CrudCargoService {
 	private void atualizar(Scanner scanner) {
 		System.out.println("Id do cargo para atualizar: ");
 		int id = scanner.nextInt();
-
-		Cargo cargo = new Cargo();
-		cargo = repository.findById(id).get();
-
 		System.out.println("Digite a descrição: ");
 		String descricao = scanner.next();
+
+		Cargo cargo = new Cargo();
+		cargo.setId(id);
 		cargo.setDescricao(descricao);
+
 		repository.save(cargo);
 		System.out.println("Atualizado");
 	}
