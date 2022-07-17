@@ -7,22 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cargos")
-public class Cargo {
+@Table(name = "unidade_trabalho")
+public class UnidadeTrabalho {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String descricao;
 
-	@OneToMany(mappedBy = "cargo")
-	private List<Funcionario> funcionarios = new ArrayList<>();
+	private String endereco;
 	
+	@ManyToMany(mappedBy = "unidadeTrabalhos")
+	private List<Funcionario> funcionarios = new ArrayList<>();
+
 	public Integer getId() {
 		return id;
 	}
@@ -39,10 +41,22 @@ public class Cargo {
 		this.descricao = descricao;
 	}
 
-	@Override
-	public String toString() {
-		return "Cargo [id=" + id + ", descricao=" + descricao + "]";
+	public String getEndereco() {
+		return endereco;
 	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
 	
 	
 	

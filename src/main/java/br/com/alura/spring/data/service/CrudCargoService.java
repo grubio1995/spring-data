@@ -1,6 +1,5 @@
 package br.com.alura.spring.data.service;
 
-import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
