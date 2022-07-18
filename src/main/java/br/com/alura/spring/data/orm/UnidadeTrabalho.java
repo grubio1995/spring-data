@@ -57,6 +57,12 @@ public class UnidadeTrabalho {
 		this.funcionarios = funcionarios;
 	}
 
+	@Override
+	public String toString() {
+		return "UnidadeTrabalho [id=" + id + ", descricao=" + descricao + ", endereco=" + endereco + ", funcionarios="
+				+ funcionarios + "]";
+	}
+
 	
 	
 	

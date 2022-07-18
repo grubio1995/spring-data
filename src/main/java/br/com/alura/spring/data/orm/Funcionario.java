@@ -101,5 +101,12 @@ public class Funcionario {
 		this.unidadeTrabalhos = unidadeTrabalhos;
 	}
 
+	@Override
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario
+				+ ", dataContratacao=" + dataContratacao + ", cargo=" + cargo;
+	}
+
+	
 	
 }
